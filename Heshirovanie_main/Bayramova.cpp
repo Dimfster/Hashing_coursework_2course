@@ -190,7 +190,7 @@ std::vector<uint8_t> finish() {
     return hash;
 }
 
-std::vector<uint8_t> MD5(void* original_input, uint64_t size) {
+std::vector<uint8_t> md5_hash(void* original_input, uint64_t size) {
     uint8_t* place = new uint8_t[size + 100];
     memcpy(static_cast<void*>(place), original_input, size);
     input = static_cast<void*>(place);
@@ -216,9 +216,7 @@ std::string md5hash_to_string(std::vector<uint8_t> hash) {
 }
 
 
-int Print()
+std::string MD5(std::string word)
 {
-    std::string hash = MD5("Bitcoin");
-    std::cout << hash << std::endl;
-    return 0;
+    return md5hash_to_string(md5_hash(&word[0], word.size()));
 }

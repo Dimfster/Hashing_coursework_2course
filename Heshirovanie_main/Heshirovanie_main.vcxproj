@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Bayramova-MD5.cpp" />
+    <ClCompile Include="Bayramova.cpp" />
     <ClCompile Include="Heshirovanie_main.cpp" />
     <ClCompile Include="Papple-sha3.cpp" />
     <ClCompile Include="Marchenko-sha1.cpp" />
