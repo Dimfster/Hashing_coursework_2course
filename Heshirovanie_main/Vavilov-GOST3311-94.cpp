@@ -73,7 +73,7 @@ void gostHash(const std::string& input, uint8_t* output) {
     memcpy(output, block, 32);
 }
 
-int main() {
+int print() {
     std::string input = "bitcoin";
     uint8_t hash[32];
 

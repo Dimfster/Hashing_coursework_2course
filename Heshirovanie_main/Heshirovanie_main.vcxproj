@@ -131,6 +131,7 @@
     <ClCompile Include="Heshirovanie_main.cpp" />
     <ClCompile Include="sha2.cpp" />
     <ClCompile Include="tenyaeva.cpp" />
+    <ClCompile Include="Vavilov-GOST3311-94.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sha2.h" />
