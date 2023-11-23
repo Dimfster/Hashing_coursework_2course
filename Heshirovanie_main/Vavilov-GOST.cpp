@@ -43,19 +43,3 @@ void gost_3411_94_hash(const char* message, size_t length, word* hash) {
 
     delete[] padded_message;
 }
-
-int main() {
-    const char* message = "bitcoin";
-    size_t length = strlen(message);
-    word hash[8];
-
-    gost_3411_94_hash(message, length, hash);
-
-    std::cout << "Hash: ";
-    for (int i = 0; i < 8; ++i) {
-        std::cout << std::hex << std::setw(8) << std::setfill('0') << hash[i];
-    }
-    std::cout << std::dec << std::endl;
-
-    return 0;
-}

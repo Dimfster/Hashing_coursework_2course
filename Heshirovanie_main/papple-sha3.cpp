@@ -201,7 +201,7 @@ std::string binaryToHex(const std::string& binaryString) {
     return hexResult;
 }
 
-std::string SHA_3_256_ByPapple(const std::string& message){
+std::string SHA_3_256_ByPapple(std::string message){
     int hashLength = 256; // Длина хеша для SHA-3-256)
 
     int rate = 1600 / 8; // Размер блока (rate) для SHA-3-256 в байтах

@@ -5,6 +5,8 @@ using std::string;
 using std::cout;
 using std::endl;
 
+
+/*
 int main(int argc, char* argv[])
 {
     string input = "Bitcoin";
@@ -19,3 +21,4 @@ int main(int argc, char* argv[])
     cout << "sha512('" << input << "'):" << output4 << endl;
     return 0;
 }
+*/
