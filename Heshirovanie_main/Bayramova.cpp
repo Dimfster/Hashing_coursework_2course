@@ -215,25 +215,10 @@ std::string md5hash_to_string(std::vector<uint8_t> hash) {
     return ret;
 }
 
-int main() {
-    //#define test_speed
 
-#ifndef test_speed
-    std::string s;
-    while (true) {
-        std::cout << "Input: ";
-        std::getline(std::cin, s);
-        s = "Bitcoin";
-        std::cout << "Hash: " << md5hash_to_string(MD5(&s[0], s.size())) << std::endl;
-    }
-#else
-    int arr[500];
-    int counter = 0;
-    int start = clock();
-    while (clock() - start < 1000)
-        MD5(&arr[counter % 500], 7), counter++;
-    std::cout << counter;
-#endif
-
+int Print()
+{
+    std::string hash = MD5("Bitcoin");
+    std::cout << hash << std::endl;
     return 0;
 }
