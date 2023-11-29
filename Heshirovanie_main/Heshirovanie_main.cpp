@@ -1,10 +1,8 @@
-﻿// Heshirovanie_main.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿#define _CRT_SECURE_NO_WARNINGS
 #include "Algorithm.h"
 // Слово хешируем слово "Bitcoin";
 
 
-template <typename InputIterator>
-std::uint_fast32_t crc(InputIterator first, InputIterator last);
 
 
 
@@ -30,5 +28,4 @@ int main()
 
     //7. CRC-32 Клюев 
     //Run_Algoritm(crc32, "CRC-32");
-    
 }

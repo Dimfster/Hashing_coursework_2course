@@ -1,6 +1,9 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <cstring>
 #include <fstream>
+#include <stdio.h>
 #include "sha2.h"
+
 
 const unsigned int SHA256::sha256_k[64] = //UL = uint32
 { 0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
@@ -442,4 +445,5 @@ std::string sha512(std::string input)
     for (int i = 0; i < SHA512::DIGEST_SIZE; i++)
         sprintf(buf + i * 2, "%02x", digest[i]);
     return std::string(buf);
+    //_CRT_SECURE_NO_WARNINGS
 }

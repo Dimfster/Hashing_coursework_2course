@@ -36,9 +36,6 @@
     <ClCompile Include="Kluev-CRC-32.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Vavilov-GOST3311-94.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sha2.h">
