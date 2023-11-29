@@ -1,5 +1,3 @@
-#ifndef SHA2_H
-#define SHA2_H
 #include <string>
 
 class SHA2
@@ -14,6 +12,29 @@ protected:
     typedef unsigned int uint32;
     typedef unsigned long long uint64;
 };
+
+/*
+class SHA224 : public SHA256
+{
+public:
+    void init();
+    void update(const unsigned char* message, unsigned int len);
+    void final(unsigned char* digest);
+    static const unsigned int DIGEST_SIZE = (224 / 8);
+};
+*/
+
+
+/*
+class SHA384 : public SHA512
+{
+public:
+    void init();
+    void update(const unsigned char* message, unsigned int len);
+    void final(unsigned char* digest);
+    static const unsigned int DIGEST_SIZE = (384 / 8);
+};
+*/
 
 class SHA256 : public SHA2
 {
@@ -32,17 +53,6 @@ protected:
     unsigned char m_block[2 * SHA224_256_BLOCK_SIZE];
     uint32 m_h[8];
 };
-
-
-class SHA224 : public SHA256
-{
-public:
-    void init();
-    void update(const unsigned char* message, unsigned int len);
-    void final(unsigned char* digest);
-    static const unsigned int DIGEST_SIZE = (224 / 8);
-};
-
 
 class SHA512 : public SHA2
 {
@@ -64,18 +74,14 @@ protected:
     uint64 m_h[8];
 };
 
-class SHA384 : public SHA512
-{
-public:
-    void init();
-    void update(const unsigned char* message, unsigned int len);
-    void final(unsigned char* digest);
-    static const unsigned int DIGEST_SIZE = (384 / 8);
-};
 
+
+/*
 std::string sha224(std::string input);
-std::string sha256(std::string input);
 std::string sha384(std::string input);
+*/
+
+std::string sha256(std::string input);
 std::string sha512(std::string input);
 
 #define SHA2_SHFR(x, n)    (x >> n)
@@ -127,6 +133,4 @@ std::string sha512(std::string input);
            | ((uint64) *((str) + 1) << 48)    \
            | ((uint64) *((str) + 0) << 56);   \
 }
-
-#endif
 

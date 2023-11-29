@@ -4,7 +4,7 @@
 #include <cstring>
 #include <vector>
 
-// ГЋГґГЁГ¶ГЁГ Г«ГјГ­Г Гї ГІГ ГЎГ«ГЁГ¶Г  Г§Г Г¬ГҐГ­ (S-ГЎГ«Г®ГЄ) Г¤Г«Гї ГѓГЋГ‘Г’ 34.11-94
+// Официальная таблица замен (S-блок) для ГОСТ 34.11-94
 static const uint8_t Sbox[256] = {
     0x4, 0xA, 0x9, 0x2, 0xD, 0x8, 0x0, 0xE,
     0x6, 0xB, 0x1, 0xC, 0x7, 0xF, 0x5, 0x3,
@@ -34,7 +34,7 @@ constexpr uint32_t F = 0x9B05688C;
 constexpr uint32_t G = 0x7EEC6A91;
 constexpr uint32_t H = 0x2AAB10B6;
 
-// Г‚Г±ГЇГ®Г¬Г®ГЈГ ГІГҐГ«ГјГ­Г»ГҐ ГґГіГ­ГЄГ¶ГЁГЁ
+// Вспомогательные функции
 uint32_t getWord(const char* data) {
     return static_cast<uint32_t>((static_cast<uint8_t>(data[0]) << 24) |
         (static_cast<uint8_t>(data[1]) << 16) |
@@ -49,7 +49,7 @@ void putWord(char* data, uint32_t word) {
     data[3] = static_cast<char>(word & 0xFF);
 }
 
-// Г”ГіГ­ГЄГ¶ГЁГї ГЇГ®Г¤Г±ГІГ Г­Г®ГўГЄГЁ
+// Функция подстановки
 uint32_t P(uint32_t x) {
     return (Sbox[static_cast<uint8_t>(x >> 24)] << 24) |
         (Sbox[static_cast<uint8_t>(x >> 16)] << 16) |
@@ -57,7 +57,7 @@ uint32_t P(uint32_t x) {
         Sbox[static_cast<uint8_t>(x)];
 }
 
-// Г”ГіГ­ГЄГ¶ГЁГї ГёГЁГґГ°Г®ГўГ Г­ГЁГї Г®Г¤Г­Г®ГЈГ® ГЎГ«Г®ГЄГ 
+// Функция шифрования одного блока
 void gostBlockEncrypt(const char* block, char* result) {
     uint32_t N1 = getWord(block);
     uint32_t N2 = getWord(block + 4);
@@ -80,30 +80,30 @@ void gostBlockEncrypt(const char* block, char* result) {
     putWord(result + 4, N1);
 }
 
-// Г•ГҐГёГЁГ°Г®ГўГ Г­ГЁГҐ
-std::string gostHash(std::string input) 
+// Хеширование
+std::string gostHash(std::string input)
 {
-    // Г€Г­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї Г­Г Г·Г Г«ГјГ­Г®ГЈГ® ГўГҐГЄГІГ®Г°Г 
+    // Инициализация начального вектора
     uint32_t h[2] = { 0, 0 };
 
-    // Г„Г®ГЇГ®Г«Г­ГҐГ­ГЁГҐ Г±Г®Г®ГЎГ№ГҐГ­ГЁГї Г­ГіГ«ГїГ¬ГЁ
+    // Дополнение сообщения нулями
     size_t paddedSize = (input.size() + 7) & ~0x7;
     char* paddedData = new char[paddedSize];
     std::memcpy(paddedData, input.c_str(), input.size());
     std::memset(paddedData + input.size(), 0, paddedSize - input.size());
 
-    // ГЋГЎГ°Г ГЎГ®ГІГЄГ  ГЎГ«Г®ГЄГ®Гў
+    // Обработка блоков
     for (size_t i = 0; i < paddedSize; i += 8) {
         char block[8];
         std::memcpy(block, paddedData + i, 8);
 
-        // ГЋГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ ГўГҐГЄГІГ®Г°Г  ГµГҐГёГ 
+        // Обновление вектора хеша
         gostBlockEncrypt(block, reinterpret_cast<char*>(h));
     }
 
     delete[] paddedData;
 
-    // ГЏГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГҐ ГµГҐГёГ  Гў Г±ГІГ°Г®ГЄГі
+    // Преобразование хеша в строку
     std::string result;
     for (int i = 0; i < 2; ++i) {
         char buffer[9];

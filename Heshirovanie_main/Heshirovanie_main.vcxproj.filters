@@ -18,13 +18,22 @@
     <ClCompile Include="Heshirovanie_main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Tenyaeva-sha2.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Marchenko-sha1.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Vavilov-GOST.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Papple-sha3.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="Bayramova.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="tenyaeva.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="sha2.cpp">
+    <ClCompile Include="Kluev-CRC-32.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Vavilov-GOST3311-94.cpp">
@@ -33,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sha2.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
