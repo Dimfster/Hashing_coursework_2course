@@ -81,7 +81,7 @@ void gostBlockEncrypt(const char* block, char* result) {
 }
 
 // Хеширование
-std::string gostHash(std::string input)
+std::string gostHash(std::string input) 
 {
     // Инициализация начального вектора
     uint32_t h[2] = { 0, 0 };

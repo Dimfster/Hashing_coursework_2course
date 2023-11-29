@@ -181,6 +181,21 @@ void SHA384::final(unsigned char* digest)
 
 
 // SHA-256
+
+void SHA256::init()
+{
+    m_h[0] = 0x6a09e667;
+    m_h[1] = 0xbb67ae85;
+    m_h[2] = 0x3c6ef372;
+    m_h[3] = 0xa54ff53a;
+    m_h[4] = 0x510e527f;
+    m_h[5] = 0x9b05688c;
+    m_h[6] = 0x1f83d9ab;
+    m_h[7] = 0x5be0cd19;
+    m_len = 0;
+    m_tot_len = 0;
+}
+
 void SHA256::transform(const unsigned char* message, unsigned int block_nb)
 {
     uint32 w[64];
@@ -217,20 +232,6 @@ void SHA256::transform(const unsigned char* message, unsigned int block_nb)
             m_h[j] += wv[j];
         }
     }
-}
-
-void SHA256::init()
-{
-    m_h[0] = 0x6a09e667;
-    m_h[1] = 0xbb67ae85;
-    m_h[2] = 0x3c6ef372;
-    m_h[3] = 0xa54ff53a;
-    m_h[4] = 0x510e527f;
-    m_h[5] = 0x9b05688c;
-    m_h[6] = 0x1f83d9ab;
-    m_h[7] = 0x5be0cd19;
-    m_len = 0;
-    m_tot_len = 0;
 }
 
 void SHA256::update(const unsigned char* message, unsigned int len)

@@ -29,10 +29,10 @@ std::string sha512(std::string input);
 std::string SHA_3_256_ByPapple(std::string message);
 
 // GOST 34.11-94
+std::string gostHash(std::string input);
 
-
-// BLAKE
-
+// CRC-32
+std::string crc32(std::string input);
 
 
 using Hash = std::string(*)(std::string input);
