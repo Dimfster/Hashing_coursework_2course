@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Bayramova.cpp" />
     <ClCompile Include="Heshirovanie_main.cpp" />
+    <ClCompile Include="Vavilov-GOST3311-94.cpp" />
     <ClCompile Include="Kluev-CRC-32.cpp" />
     <ClCompile Include="Papple-sha3.cpp" />
     <ClCompile Include="Marchenko-sha1.cpp" />
